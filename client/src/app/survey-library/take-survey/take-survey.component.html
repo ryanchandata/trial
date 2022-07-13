@@ -1,0 +1,48 @@
+<!--TakeSurvey Comoponent-->
+<div class="container" id="mainContainer">
+  <div id="heading_material">
+    <h1>{{survey?.name}}</h1>
+    <div class="row">
+      <span class="pt-1 col-md-6 col-sm-12">Author: {{survey?.displayName}}</span>
+      <span class="pt-1 col-md-6 col-sm-12 " id="date_expire">Closing Date:
+        {{ survey.dateExpire | date: 'MMM d, y, h:mm a' }}
+      </span>
+    </div>
+  </div>
+  <form>
+    <!--Populating the page with questions-->
+    <div class="card bg-light rounded m-3" *ngFor="let question of survey?.questions; let questionIndex= index;">
+      <h5 class="card-header">Q{{questionIndex + 1}}. {{question.title}}</h5>
+
+      <!--Populating the page with options-->
+
+      <fieldset class="card-body pt-1 pb-1" *ngFor="let option of question.options; let optionIndex= index;">
+        <!--Templete for radio button question-->
+        <div class="pl-3" *ngIf="question.optionType === 'radio'">
+          <input type="radio" id="{{'question' + questionIndex +'option' + questionIndex}}" class="form-check-input"
+            name="{{'question' + questionIndex}}" value="{{option._id}}"
+            [checked]="checkIfSelected(question, option._id)" (change)="onSelectOption(question, option._id)" />
+          <label class="form-check-label" for="materialUnchecked">{{option.details}}</label>
+        </div>
+        <!--Templete for checkbox question-->
+        <div class="pl-3" *ngIf="question.optionType === 'checkbox'">
+          <input type="checkbox" id="{{'question' + questionIndex +'option' + questionIndex}}" class="form-check-input"
+            name="{{'question' + questionIndex}}" value="{{option._id}}"
+            [checked]="checkIfSelected(question, option._id)" (change)="onSelectOption(question, option._id)" />
+          <label class="form-check-label" for="materialUnchecked">{{option.details}}</label>
+        </div>
+      </fieldset>
+    </div>
+
+
+    <div id="button_wrapper">
+      <button class="btn btn-success btn-sm m-1 p-2 submitBtn btn-shadow" (click)="onConfirmSubmit($event)">
+        SUBMIT
+      </button>
+      <button class="btn btn-secondary btn-sm m-1 p-2 cancelBtn btn-shadow" (click)="onCancelSubmit($event)">
+        CANCEL
+      </button>
+    </div>
+
+  </form>
+</div>

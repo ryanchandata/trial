@@ -1,0 +1,51 @@
+<!-- Login Component -->
+<main class="container mb-5">
+  <span class="text-center">
+    <h1>Please Login</h1>
+  </span>
+  <div class="row">
+
+    <form class="col col-lg-8 col-md-12 col-sm-12" autocomplete='off' #form='ngForm' (ngSubmit)='authenticate(form)'
+      #loginForm="ngForm">
+      <fieldset class="form-group">
+
+        <label for="username" [ngStyle]="{'visibility': user.username? 'visible':'hidden'}">Username:</label>
+
+        <input type="text" class="form-control" [(ngModel)]='user.username' name='username' placeholder='Enter Username'
+          id='username' required autofocus autocomplete="off" #username="ngModel"
+          [ngClass]="{ 'is-invalid': username.invalid && username.dirty}">
+        <div *ngIf="username.invalid && username.dirty" class="invalid-feedback">
+          <div *ngIf="username.errors.required">Username is required</div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="password" [ngStyle]="{'visibility': user.password? 'visible':'hidden'}">Password:</label>
+        <input type="password" class="form-control" [(ngModel)]='user.password' name='password'
+          placeholder='Enter Password' id='password' required autocomplete="off" #password="ngModel"
+          [ngClass]="{ 'is-invalid': password.invalid && password.dirty}">
+        <div *ngIf="password.invalid && password.dirty" class="invalid-feedback">
+          <div *ngIf="password.errors.required">Password is required</div>
+        </div>
+        <a id="register_link" routerLink="/register">or register here</a>
+      </fieldset>
+
+      <fieldset class="mt-3 form-group text-left">
+        <button class='btn btn-primary m-1' type='submit' [disabled]="!loginForm.form.valid">
+          <i class="fas fa-sign-in-alt"></i>
+          Log In
+        </button>
+        <button class='btn btn-secondary m-1' routerLink='/home'>
+          <i class="fas fa-undo"></i>
+          Cancel
+        </button>
+
+      </fieldset>
+    </form>
+
+    <span class="col col-lg-4 col-md-12 col-sm-12" id="img-wrap">
+      <img src="assets/images/loginImg.png" class="img" alt="loginPageImage" id="loginImg">
+    </span>
+
+  </div>
+</main>

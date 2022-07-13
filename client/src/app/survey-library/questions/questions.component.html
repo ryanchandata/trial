@@ -1,0 +1,35 @@
+<!-- Questions Component-->
+<table class="table">
+  <thead class="col-9">
+    <tr>
+      <th scope="col" style="width:70%">QUESTION</th>
+      <th scope="col">EDIT</th>
+      <th scope="col">DELETE</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let question of questions">
+      <td>
+        <div class="property-value"><b>Title: </b>{{ question.title }}</div>
+        <div class="property-value"><b>Type: </b>{{ question.optionType }}</div>
+        <div class="property-value"><b>Options: </b></div>
+        <div *ngFor="let option of question.options" class="ml-5">
+          <li>{{ option.details }}</li>
+        </div>
+      </td>
+      <td>
+        <button (click)="onEdit(question)" class="btn btn-sm btn-shadow yellow-btn">
+          <i class="far fa-edit"></i>
+          EDIT
+        </button>
+      </td>
+      <td>
+        <button (click)="onDelete(question)" class="btn btn-sm btn-shadow red-btn">
+          <i class="far fa-trash-alt"></i>
+          DELETE
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

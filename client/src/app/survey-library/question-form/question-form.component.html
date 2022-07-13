@@ -1,0 +1,49 @@
+<!-- QuestionForm Component -->
+<div class="bg=light rounded p-3 shadow">
+  <form>
+    <h4>{{question ? 'Update Question' : 'Add Question'}}</h4>
+
+    <div class="form-group">
+      <label>Question Title</label>
+      <input class="form-control" placeholder="Enter question title" name="title"
+        [(ngModel)]="placeholderQuestion.title">
+    </div>
+
+    <div class="form-group">
+      <label>Type</label>
+      <select class="form-control" name="optionType" [(ngModel)]="placeholderQuestion.optionType">
+        <option value="checkbox">Checkbox</option>
+        <option value="radio">Radio</option>
+      </select>
+    </div>
+
+    <!-- Looping to display options in form-->
+    <div *ngFor="let option of placeholderQuestion.options; let i = index;" class="form-group">
+      <label>Option Description</label>
+      <div class="d-flex flex-row">
+        <!--icon for deleting otptions-->
+        <i id="delete-option-button" class="fas fa-minus-circle p-1" (click)="onDelete(i)"
+          *ngIf="placeholderQuestion.options.length > 1"></i>
+        <!--Options input-->
+        <input class="form-control" placeholder="Enter option description" name="details + {{i}}"
+          [(ngModel)]="option.details">
+      </div>
+    </div>
+
+    <div class="row ml-0">
+      <button [disabled]="!placeholderQuestion.title" (click)="onAddOption()"
+        class="btn btn-sm blue-btn m-1 btn-shadow large-btn">
+        <i class="fas fa-plus-circle"></i> ADD OPTION
+      </button>
+
+      <div>
+        <button [disabled]="!placeholderQuestion.title" (click)="onSave()"
+          class="btn green-btn btn-sm m-1 btn-shadow large-btn">
+          {{question ? 'UPDATE' : 'ADD QUESTION'}}
+        </button>
+      </div>
+
+    </div>
+
+  </form>
+</div>

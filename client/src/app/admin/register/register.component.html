@@ -1,0 +1,76 @@
+<!-- Register Component -->
+<main class="container mb-5">
+  <span class="text-center">
+    <h1>Create an account</h1>
+  </span>
+  <div class="row">
+
+    <form class="col col-lg-8 col-md-12" autocomplete="off" (submit)="onRegisterSubmit()" #registerForm="ngForm">
+      <fieldset class="form-group">
+        <label for="username" [ngStyle]="{'visibility': user.username? 'visible':'hidden'}">Username:</label>
+
+        <input type="username" class="form-control" [(ngModel)]="user.username" name="username"
+          placeholder="Enter username" #username="ngModel"
+          [ngClass]="{ 'is-invalid': username.invalid && username.dirty}" required>
+        <div *ngIf="username.invalid && username.dirty" class="invalid-feedback">
+          <div *ngIf="username.errors.required">Username is required</div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="password" [ngStyle]="{'visibility': user.password? 'visible':'hidden'}">Password:</label>
+
+        <input type="password" class="form-control" [(ngModel)]="user.password" name="password"
+          placeholder="Enter Password" #password="ngModel"
+          [ngClass]="{ 'is-invalid': password.invalid && password.dirty}" required minlength="6">
+        <div *ngIf="password.invalid && password.dirty" class="invalid-feedback">
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="email" [ngStyle]="{'visibility': user.email? 'visible':'hidden'}">Email:</label>
+        <!-- uses custom email directive validator-->
+        <input type="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Enter Email"
+          id="email" autocomplete="off" #email="ngModel" required emailValidateDirective
+          [ngClass]="{ 'is-invalid': email.invalid && email.dirty}">
+        <div *ngIf="email.invalid && email.dirty" class="invalid-feedback">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.emailInvalid">Email must be a valid email address</div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label for="displayName" [ngStyle]="{'visibility': user.displayName? 'visible':'hidden'}">Display Name:</label>
+
+        <input type="displayName" class="form-control" [(ngModel)]="user.displayName" name="displayName"
+          placeholder="Enter Display Name" #displayName="ngModel"
+          [ngClass]="{ 'is-invalid': displayName.invalid && displayName.dirty}" required>
+        <div *ngIf="displayName.invalid && displayName.dirty" class="invalid-feedback">
+          <div *ngIf="displayName.errors.required">Display name is required</div>
+        </div>
+      </fieldset>
+
+
+      <fieldset class="mt-4 form-group text-left">
+        <button class='btn btn-primary m-1' type='submit' [disabled]="!registerForm.form.valid">
+          <i class="fas fa-sign-in-alt"></i>
+          Register
+        </button>
+        <button id='cancelBtn' class='btn btn-secondary m-1' routerLink='/home'>
+          <i class="fas fa-undo"></i>
+          Cancel
+        </button>
+
+
+      </fieldset>
+    </form>
+
+
+    <span class="col col-lg-4 col-md-12" id="img-wrap">
+      <img src="assets/images/registerImg.png" class="img" alt="registerPageImage" id="registerImg">
+    </span>
+
+  </div>
+</main>

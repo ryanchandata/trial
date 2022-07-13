@@ -1,0 +1,40 @@
+<!-- Home/Landing Page -->
+    <div id="background">
+      <div class="wrapper">
+        <table>
+          <tr>
+            <td class="main_title">
+              <div class="css-typing">
+                <p>Survey with 3C,</p>
+                <p>learn without distance !</p>
+              </div>
+            </td>
+            <td class="pic" rowspan="2">
+              <!-- Picture section -->
+              <div id="pic_div">
+                <img src="assets/images/main_pic.png" id="main_img">
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="sub_title">
+              <h3>As a survey creator</h3>
+              <ul>
+                <li>(1) Register / login your account</li>
+                <li>(2) Create a survey template</li>
+                <li>(3) Share the page link to survey takers</li>
+              </ul>
+              <a id="heroBtn" routerLink="/surveys" class="btn btn-primary justify-content-center" id="heroBtn">
+                Create Survey
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+<div id="background2">
+  <!-- Active Surveys -->
+  <app-survey-list></app-survey-list>
+</div>

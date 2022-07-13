@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+i {
+  margin-right: 3px;
+}
+body {
+  font-family: Roboto, sans-serif;
+}
+
+h1 {
+  margin-top: 3rem!important;
+}
+.btn-shadow {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.large-btn {
+  width: 150px !important;
+}
+.button-secondary {
+  font-size: 16px;
+  width: 115px;
+  border: none;
+}
+
+.green-btn {
+  background: #33CDA8;
+  border: none;
+  color: white;
+  font-size: 16px;
+  width: 115px;
+  height: 34px;
+}
+.green-btn:hover {
+  background: #249279;
+  color: white;
+}
+.green-btn:disabled:hover {
+  background: #33CDA8;
+}
+
+
+
+.blue-btn {
+  background-color: #2e61ae;
+  color: white;
+  font-size: 16px;
+  width: 115px;
+  height: 34px;
+  border: none;
+}
+
+.blue-btn:hover {
+  background-color: #254e8b;
+  color: white;
+}
+.blue-btn:disabled:hover {
+  background-color: #2e61ae;
+}
+
+.red-btn {
+  background: #FF4C25;
+  color: white;
+  font-size: 16px;
+  width: 115px;
+  height: 34px;
+  border: none;
+}
+.red-btn:hover {
+  background: #dd411e;
+  color: white;
+}
+
+.yellow-btn {
+  background-color:#F8AF1B;
+  color: white;
+  font-size: 16px;
+  width: 115px;
+  height: 34px;
+  border: none;
+}
+.yellow-btn:hover {
+  background-color:#da9814;
+  color: white;
+}

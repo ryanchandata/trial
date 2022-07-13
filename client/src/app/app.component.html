@@ -1,0 +1,29 @@
+<div class="page-wrapper">
+
+  <div class="sticky-header">
+    <app-header></app-header>
+  </div>
+
+  <div class="content-wrapper">
+
+    <div class="content">
+      <div id="flashMessages">
+        <flash-messages></flash-messages>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- <div *ngIf="!(pageTitle === 'Register' || pageTitle ==='Login' || this.pageTitle === 'Update Account')" -->
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+
+    <!-- fixed footer for pages that are short when screen size is large -->
+    <!-- <div *ngIf="pageTitle === 'Register' || pageTitle === 'Login' || this.pageTitle === 'Update Account'"
+      class="footer fixed-footer">
+      <app-footer></app-footer>
+    </div> -->
+
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<!-- Main Navigation -->
+<div id="background">
+  <nav id="nav_wrapper" class="navbar navbar-expand-lg navbar-dark">
+
+    <!-- Logo and site name -->
+    <a class="navbar-brand" href="/home">
+      <img id="logo" src="assets/images/cup.png" alt="logo">
+      3C SURVEYS
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Survey buttons -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/surveys">
+            Create Survey
+          </a>
+        </li> -->
+
+
+      </ul>
+    </div>
+
+    <!-- Register and Login -- Note: routerLinks may need to be altered-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+
+
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" routerLink="/home"><i class="fas fa-lg fa-laptop-house"></i> Home </a>
+        </li>
+
+
+        <!--Inpage hash tag link-->
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['home']" pageScroll href="#active_surveys" [pageScrollDuration]="200"
+            [pageScrollSpeed]="200" fragment="active-surveys"><i class="fas fa-lg fa-tasks"></i>
+            See Active Surveys
+          </a>
+        </li>
+
+        <!--check statistics link to survey management when not logged in -->
+        <li *ngIf='!isLoggedIn()' class="nav-item">
+          <a class="nav-link" routerLink="/surveys"><i class="fas fa-lg fa-check-square"></i>
+            Check Statistics
+          </a>
+        </li>
+
+
+        <!-- CREATE SURVEYS -->
+        <li *ngIf='isLoggedIn()' class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="/surveys"><i class="fas fa-poll fa-lg"></i> Manage Surveys </a>
+        </li>
+
+        <!-- LOGIN/LOGOUT -->
+
+        <!-- Admin menu -->
+
+        <li *ngIf='isLoggedIn()' class="nav-item dropdown ml-5" class="dropdown">
+          <a class="nav-link text-warning dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"><i class="fas fa-lg fa-user-shield"></i>
+            {{ user.displayName }} </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" routerLink="/update">Update account</a>
+            <!-- log out-->
+            <a (click)='onLogoutClick()' routerLink='/logout' class="dropdown-item" routerLink="/login">
+              <i class="fas fa-sign-out-alt"></i> Sign out </a>
+          </div>
+        </li>
+
+        <li *ngIf='!isLoggedIn()' class="nav-item" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink="/register"><i
+              class="fas fa-lg fa-file-signature"></i>
+            Register
+          </a>
+        </li>
+
+
+        <!-- Login -->
+        <li *ngIf='!isLoggedIn()' class="nav-item">
+          <a class="nav-link" routerLink="/login" class="btn btn-primary justify-content-center" id="heroBtn"><i
+              class="fas fa-sign-in-alt"></i> Login </a>
+        </li>
+
+      </ul>
+    </div>
+
+  </nav>
+</div>

@@ -1,0 +1,70 @@
+<!-- Update User Info Component -->
+<main class="container mb-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-sm-8 offset-sm-1">
+      <form autocomplete="off" #form='ngForm' (ngSubmit)='form.form.valid && onUpdateSubmit(form)'>
+
+        <span class="text-center">
+          <h1>Update Your Account</h1>
+        </span>
+
+        <fieldset class="form-group">
+          <label for="email" [ngStyle]="{'visibility': user.email? 'visible':'hidden'}">*Email:</label>
+          <!-- uses custom email directive validator-->
+          <input type=" email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Enter Email"
+            id="email" autocomplete="off" #email="ngModel" required emailValidateDirective
+            [ngClass]="{ 'is-invalid': email.invalid && email.dirty}">
+          <div *ngIf="email.invalid && email.dirty" class="invalid-feedback">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.emailInvalid">Email must be a valid email address</div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="displayName" [ngStyle]="{'visibility': user.displayName? 'visible':'hidden'}">*Display
+            Name:</label>
+          <input type="displayName" class="form-control" [(ngModel)]="user.displayName" name="displayName"
+            placeholder="Enter Display Name" #displayName="ngModel"
+            [ngClass]="{ 'is-invalid': displayName.invalid && displayName.dirty}" required>
+          <div *ngIf="displayName.invalid && displayName.dirty" class="invalid-feedback">
+            <div *ngIf="displayName.errors.required">Display name is required</div>
+          </div>
+        </fieldset>
+
+
+        <fieldset class="form-group">
+          <label for="password" [ngStyle]="{'visibility': user.password? 'visible':'hidden'}">*Current Password:</label>
+          <input type="password" class="form-control" [(ngModel)]="user.password" name="password"
+            placeholder="Enter Current Password" #password="ngModel" id="password" required autocomplete="off"
+            [ngClass]="{ 'is-invalid': password.invalid && form.submitted}">
+          <div *ngIf="form.submitted && password.invalid" class="invalid-feedback">
+            <div *ngIf="password.errors.required">Password is required</div>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label for="newPassword" [ngStyle]="{'visibility': user.newPassword? 'visible':'hidden'}">New
+            Password:</label>
+          <input type="password" class="form-control" [(ngModel)]="user.newPassword" name="newPassword"
+            placeholder="Enter New Password" #newPassword="ngModel"
+            [ngClass]="{ 'is-invalid': newPassword.invalid && newPassword.dirty}" minlength="6">
+          <div *ngIf="newPassword.invalid && newPassword.dirty" class="invalid-feedback">
+            <div *ngIf="newPassword.errors.minlength">Password must be at least 6 characters</div>
+          </div>
+        </fieldset>
+
+        <fieldset class="mt-4 form-group text-left">
+          <button class='btn btn-primary m-1' type='submit'>
+            <i class="fas fa-sign-in-alt"></i>
+            Update
+          </button>
+          <button class='btn btn-secondary m-1' routerLink='/surveys'>
+            <i class="fas fa-undo"></i>
+            Cancel
+          </button>
+        </fieldset>
+
+      </form>
+    </div>
+  </div>
+</main>

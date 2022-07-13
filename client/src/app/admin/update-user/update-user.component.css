@@ -1,0 +1,21 @@
+.invalid-feedback {
+  position: absolute;
+}
+
+.form-group {
+  /* margin-top: 1.25rem; */
+  margin-bottom: 0;
+}
+
+label {
+  font-size: 12px;
+  position: relative;
+  top: 17px;
+  background-color: white;
+  padding: 0 5px;
+  left: 9px;
+}
+
+h1 {
+  font-weight: bold;
+}
